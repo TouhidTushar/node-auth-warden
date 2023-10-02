@@ -30,6 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/head/master' }}
     needs: [test]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -39,3 +42,6 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run semantic-release
+        env: 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
