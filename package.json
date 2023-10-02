@@ -1,0 +1,31 @@
+{
+  "name": "nodeauthwarden",
+  "version": "0.0.0-development",
+  "description": "A simple nodejs authentication library",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "tsc",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "semantic-release": "semantic-release"
+  },
+  "keywords": [
+    "nodejs",
+    "auth",
+    "authentication"
+  ],
+  "author": "Touhid Tushar <tushartouhed@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^22.0.5",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TouhidTushar/nodeauthwarden.git"
+  }
+}
