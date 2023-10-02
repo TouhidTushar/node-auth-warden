@@ -25,10 +25,14 @@ jobs:
           cache-key: pnpm-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install pnpm
         run: |
-          curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh - && source /home/runner/.bashrc
+          curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh -
         shell: bash
-      - run: pnpm ci
-      - run: pnpm test
+      - name: Source pnpm
+        run: source /home/runner/.bashrc
+      - name: Install dependencies
+        run: pnpm ci
+      - name: Run tests
+        run: pnpm test
 
   release:
     runs-on: ubuntu-latest
@@ -47,10 +51,14 @@ jobs:
           cache-key: pnpm-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install pnpm
         run: |
-          curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh - && source /home/runner/.bashrc
+          curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh -
         shell: bash
-      - run: pnpm ci
-      - run: pnpm semantic-release
+      - name: Source pnpm
+        run: source /home/runner/.bashrc
+      - name: Install dependencies
+        run: pnpm ci
+      - name: Run semantic-release
+        run: pnpm semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
