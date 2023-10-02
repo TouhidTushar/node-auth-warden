@@ -27,12 +27,16 @@ jobs:
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh -
         shell: bash
-      - name: Source pnpm
-        run: source /home/runner/.bashrc
       - name: Install dependencies
-        run: pnpm ci
+        run: |
+          source /home/runner/.bashrc
+          pnpm ci
+        shell: bash
       - name: Run tests
-        run: pnpm test
+        run: |
+          source /home/runner/.bashrc
+          pnpm test
+        shell: bash
 
   release:
     runs-on: ubuntu-latest
@@ -53,12 +57,16 @@ jobs:
         run: |
           curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh -
         shell: bash
-      - name: Source pnpm
-        run: source /home/runner/.bashrc
       - name: Install dependencies
-        run: pnpm ci
+        run: |
+          source /home/runner/.bashrc
+          pnpm ci
+        shell: bash
       - name: Run semantic-release
-        run: pnpm semantic-release
+        run: |
+          source /home/runner/.bashrc
+          pnpm semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
