@@ -1,2 +1,3 @@
-const msg = "Hello World";
-console.log(msg);
+export const hi = () => {
+  console.log("Hello 👋");
+};
