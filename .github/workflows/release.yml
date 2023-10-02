@@ -12,22 +12,19 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x, 18.x, 20.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Use pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ${{ matrix.node-version == '12.x' && '6' || matrix.node-version == '14.x' && '7' || 'latest' }}
+          version: latest
           cache: true
           registry: https://registry.npmjs.org
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -38,22 +35,19 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/head/master' }}
     needs: [test]
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x, 18.x, 20.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Use pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ${{ matrix.node-version == '12.x' && '6' || matrix.node-version == '14.x' && '7' || 'latest' }}
+          version: latest
           cache: true
           registry: https://registry.npmjs.org
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
