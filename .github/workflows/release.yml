@@ -23,11 +23,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache-key: pnpm-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Set SHELL environment variable
-        run: export SHELL=$(which bash)
       - name: Install pnpm
         run: |
-          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh -
         shell: bash
       - run: pnpm ci
       - run: pnpm test
@@ -47,11 +45,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache-key: pnpm-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Set SHELL environment variable
-        run: export SHELL=$(which bash)
       - name: Install pnpm
         run: |
-          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          curl -fsSL https://get.pnpm.io/install.sh | SHELL=bash sh -
         shell: bash
       - run: pnpm ci
       - run: pnpm semantic-release
