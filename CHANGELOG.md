@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/TouhidTushar/nodeauthwarden/compare/v1.0.0...v1.0.1) (2023-10-03)
+
+
+### Bug Fixes
+
+* **workflow:** fix OTP issue ([d82da20](https://github.com/TouhidTushar/nodeauthwarden/commit/d82da20574c8e73e14c8cecfe2c29a7c891b3294))
+
 # 1.0.0 (2023-10-03)
 
 
