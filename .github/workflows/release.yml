@@ -51,6 +51,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
       - name: Run semantic-release
         run: pnpm semantic-release
         env:
