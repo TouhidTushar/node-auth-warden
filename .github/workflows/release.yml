@@ -5,9 +5,9 @@ name: nodeauthwarden CI
 
 on:
   push:
-    branches: ["master"]
+    branches: ['master']
   pull_request:
-    branches: ["*"]
+    branches: ['*']
 
 jobs:
   test:
@@ -19,13 +19,11 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          cache: true
-          registry: https://registry.npmjs.org
       - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: "pnpm"
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run tests
@@ -42,13 +40,11 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          cache: true
-          registry: https://registry.npmjs.org
       - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
-          cache: "pnpm"
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
