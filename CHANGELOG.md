@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/TouhidTushar/nodeauthwarden/compare/v1.0.2...v1.0.3) (2023-10-03)
+
+
+### Bug Fixes
+
+* **workflow:** fix CI run ([577fd2d](https://github.com/TouhidTushar/nodeauthwarden/commit/577fd2d977ecd00537fcd1144651517254943814))
+
 ## [1.0.2](https://github.com/TouhidTushar/nodeauthwarden/compare/v1.0.1...v1.0.2) (2023-10-03)
 
 
