@@ -1,6 +1,6 @@
 {
   "name": "node-auth-warden",
-  "version": "0.0.1",
+  "version": "1.0.4",
   "description": "A simple authentication library for Node.js",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

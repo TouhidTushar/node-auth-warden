@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/TouhidTushar/nodeauthwarden/compare/v1.0.3...v1.0.4) (2023-10-05)
+
+
+### Bug Fixes
+
+* **lint-staged:** install husky & pre-commit hook ([64cfc72](https://github.com/TouhidTushar/nodeauthwarden/commit/64cfc72cbed7da68eddf5c150fc2d759048232f1))
+* **lint-staged:** mark pre-commit as executable ([c976419](https://github.com/TouhidTushar/nodeauthwarden/commit/c9764190bf7951b7cc1e5d6fb2e90200b8ada3ee))
+* **scaffolding:** fix linting, formatting ([242db95](https://github.com/TouhidTushar/nodeauthwarden/commit/242db95ff15edfd1ea19f1fdc998c3f3c177ae2a))
+
 ## [1.0.3](https://github.com/TouhidTushar/nodeauthwarden/compare/v1.0.2...v1.0.3) (2023-10-03)
 
 
