@@ -49,5 +49,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/TouhidTushar/nodeauthwarden.git"
+  },
+  "dependencies": {
+    "sqlite": "^5.0.1",
+    "sqlite3": "^5.1.6"
   }
 }
