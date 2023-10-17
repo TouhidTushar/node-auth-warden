@@ -1,21 +1,16 @@
-import { AuthChannelManager } from 'channels';
 import { WardenConfig } from '../types';
+import { ChannelManager } from 'channels';
 
 export class NodeAuthWarden {
-  private config?: WardenConfig;
+  private config: WardenConfig;
 
-  constructor(config?: WardenConfig) {
+  constructor(config: WardenConfig) {
     this.config = config;
   }
 
   public initialize(): void {
     console.log('Initializing NodeAuthWarden...');
-
-    const channels = new AuthChannelManager({
-      channels: this.config?.channels,
-      localOptions: this.config?.localOptions,
-    });
-
+    const channels = new ChannelManager(this.config);
     channels.initiateChannels();
   }
 }

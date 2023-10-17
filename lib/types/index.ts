@@ -1,19 +1,16 @@
-import { ALL_CHANNELS, ALL_DB_ENGINES } from '../consts';
-
-export type DBEngine = (typeof ALL_DB_ENGINES)[number];
-
-export type AuthChannel = (typeof ALL_CHANNELS)[number];
-
-export interface LocalOptions {
-  dbEngine?: DBEngine;
-}
+import { Channel, DbEngine } from '../consts';
 
 export interface WardenConfig {
-  channels?: AuthChannel[] | AuthChannel | string;
+  channels: Channel[];
   localOptions?: LocalOptions;
 }
 
-export interface AuthChannelManagerOptions {
-  channels?: AuthChannel[] | AuthChannel | string;
+export interface ChannelManagerOptions {
+  channels: Channel[];
   localOptions?: LocalOptions;
+}
+
+export interface LocalOptions {
+  dbEngine?: DbEngine;
+  dbPath?: string;
 }

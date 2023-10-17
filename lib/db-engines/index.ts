@@ -1,20 +1,30 @@
-import { DBEngine } from 'types';
 import { SQLiteEngine } from './sqlite';
 
-export class DBEngineManager {
-  private dbEngine?: DBEngine;
+import { DbEngine } from 'consts';
+import { LocalOptions } from 'types';
+import converter from 'utils/converter';
 
-  constructor(dbEngine?: DBEngine) {
-    this.dbEngine = dbEngine;
+export class DbEngineManager {
+  private options?: LocalOptions;
+
+  constructor(options?: LocalOptions) {
+    this.options = options;
   }
 
   public intiateDB(): void {
     let db;
-    switch (this.dbEngine) {
-      default:
-        db = new SQLiteEngine();
+    const dbEngine = this.options?.dbEngine || DbEngine.SQLITE_DB;
+    switch (dbEngine) {
+      case DbEngine.SQLITE_DB:
+        db = new SQLiteEngine(this.options?.dbPath);
         db.initialize();
         break;
+      default:
+        throw new Error(
+          `Invalid database engine: ${dbEngine}. Valid engines are ${converter.enumToString(
+            DbEngine,
+          )}`,
+        );
     }
   }
 }

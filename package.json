@@ -12,7 +12,8 @@
     "test": "vitest run",
     "build": "rimraf dist/* && tsup lib/* lib/**/* --format cjs,esm --dts",
     "dev": "nodemon --watch lib -e ts,js,mjs,cjs,json --exec \"pnpm build\"",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "create-migration": "knex migrate:make"
   },
   "keywords": [
     "nodejs",

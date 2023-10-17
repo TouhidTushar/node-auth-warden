@@ -1,5 +1,5 @@
-import { DBEngineManager } from 'db-engines';
 import { LocalOptions } from 'types';
+import { DbEngineManager } from 'db-engines';
 
 export class LocalChannel {
   private options?: LocalOptions;
@@ -10,7 +10,7 @@ export class LocalChannel {
 
   initiateLocalChannel() {
     console.log('Initializing Local Authentication Channel...');
-    const db = new DBEngineManager(this.options?.dbEngine);
+    const db = new DbEngineManager(this.options);
     db.intiateDB();
   }
 }
