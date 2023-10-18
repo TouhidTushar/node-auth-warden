@@ -8,7 +8,7 @@ export class LocalChannel {
     this.options = options;
   }
 
-  initiateLocalChannel() {
+  public initiateLocalChannel(): void {
     console.log('Initializing Local Authentication Channel...');
     const db = new DbEngineManager(this.options);
     db.intiateDB();
