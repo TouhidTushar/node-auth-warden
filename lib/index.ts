@@ -1,20 +1,3 @@
-import { Config } from './types';
+import { NodeAuthWarden } from 'warden';
 
-class NodeAuthWarden {
-  private msg: string;
-
-  private count: number;
-
-  constructor({ msg, count }: Config) {
-    this.msg = msg;
-    this.count = count;
-  }
-
-  public logMsg(): void {
-    for (let i = 0; i < this.count; i++) {
-      console.log(this.msg, i + 1);
-    }
-  }
-}
-
-export default NodeAuthWarden;
+export { NodeAuthWarden };

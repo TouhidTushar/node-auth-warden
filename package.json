@@ -10,9 +10,11 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
     "test": "vitest run",
-    "build": "rimraf dist/* && tsup lib/* lib/**/* --format cjs,esm --dts",
+    "build": "rimraf dist/* && tsup lib/* lib/**/* --format cjs,esm --dts && pnpm manage-migration-dir",
+    "manage-migration-dir": "find dist/db/migrations -type f ! -name \"*.js\" -exec rm -f {} \\;",
     "dev": "nodemon --watch lib -e ts,js,mjs,cjs,json --exec \"pnpm build\"",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "migration": "knex migrate:make"
   },
   "keywords": [
     "nodejs",
@@ -49,5 +51,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/TouhidTushar/nodeauthwarden.git"
+  },
+  "dependencies": {
+    "knex": "^3.0.1",
+    "nanoid": "^5.0.2",
+    "sqlite3": "^5.1.6"
   }
 }
