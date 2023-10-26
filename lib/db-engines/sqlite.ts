@@ -1,7 +1,9 @@
 import path from 'path';
 import Knex from 'knex';
 
+import Logger from 'utils/logger';
 import { SQLITE_DB_NAME } from 'consts';
+import MigrationManager from 'utils/migration-manager';
 
 export class SQLiteEngine {
   private dbPath: string;
@@ -17,6 +19,8 @@ export class SQLiteEngine {
       connection: path.join(this.dbPath, SQLITE_DB_NAME),
       migrations: {
         directory: __dirname + '/db/migrations',
+        tableName: 'node_auth_warden_migrations',
+        lockTableName: 'node_auth_warden_migrations_lock',
       },
     };
 
@@ -24,19 +28,21 @@ export class SQLiteEngine {
       const knex = Knex(knexConfig);
 
       await knex.raw('SELECT 1');
-      console.log(
-        'Database connection established successfully at ' +
-          path.join(this.dbPath, SQLITE_DB_NAME),
+      Logger.info(
+        `Database connection established successfully at ${path.join(
+          this.dbPath,
+          SQLITE_DB_NAME,
+        )}`,
       );
 
-      console.log('Migrating database to latest state...');
-      await knex.migrate.latest();
-      console.log('Database migration successful');
+      await MigrationManager.migrate(knex, this.dbPath);
     } catch (err) {
-      console.error(err);
-      throw new Error(
-        'Failed to establish database connection at ' +
-          path.join(this.dbPath, SQLITE_DB_NAME),
+      Logger.error(
+        `Failed to establish database connection ${path.join(
+          this.dbPath,
+          SQLITE_DB_NAME,
+        )}`,
+        err,
       );
     }
   }

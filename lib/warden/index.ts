@@ -1,3 +1,4 @@
+import Logger from 'utils/logger';
 import { WardenConfig } from '../types';
 import { ChannelManager } from 'channels';
 
@@ -9,7 +10,7 @@ export class NodeAuthWarden {
   }
 
   public initialize(): void {
-    console.log('Initializing NodeAuthWarden...');
+    Logger.info('Initializing NodeAuthWarden...');
     const channels = new ChannelManager(this.config);
     channels.initiateChannels();
   }

@@ -1,3 +1,4 @@
+import Logger from 'utils/logger';
 import { LocalOptions } from 'types';
 import { DbEngineManager } from 'db-engines';
 
@@ -9,7 +10,7 @@ export class LocalChannel {
   }
 
   public initiateLocalChannel(): void {
-    console.log('Initializing Local Authentication Channel...');
+    Logger.info('Initializing Local Authentication Channel...');
     const db = new DbEngineManager(this.options);
     db.intiateDB();
   }
